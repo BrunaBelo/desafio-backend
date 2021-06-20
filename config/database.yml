@@ -1,8 +1,11 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  host: db
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
+  username: postgres
+  password: desafio-backend
 
 development:
   <<: *default
@@ -15,5 +18,3 @@ test:
 production:
   <<: *default
   database: desafio_backend_production
-  username: desafio_backend
-  password: <%= ENV['DESAFIO_BACKEND_DATABASE_PASSWORD'] %>
