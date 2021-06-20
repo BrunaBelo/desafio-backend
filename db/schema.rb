@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_20_215051) do
+ActiveRecord::Schema.define(version: 2021_06_20_225022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,4 +22,18 @@ ActiveRecord::Schema.define(version: 2021_06_20_215051) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "parliamentarians", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "number_person_id"
+    t.string "federation_unity", limit: 2, null: false
+    t.string "political_party", limit: 2
+    t.string "card_parliamentary"
+    t.integer "register_id"
+    t.bigint "legislature_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["legislature_id"], name: "index_parliamentarians_on_legislature_id"
+  end
+
+  add_foreign_key "parliamentarians", "legislatures"
 end
