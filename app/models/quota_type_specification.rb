@@ -1,3 +1,3 @@
 class QuotaTypeSpecification < ApplicationRecord
-    has_many :quota_types
+    belongs_to :quota_type
 end

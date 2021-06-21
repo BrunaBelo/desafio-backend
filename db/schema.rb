@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_21_004604) do
+ActiveRecord::Schema.define(version: 2021_06_21_010902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,8 +52,10 @@ ActiveRecord::Schema.define(version: 2021_06_21_004604) do
   create_table "quota_type_specifications", force: :cascade do |t|
     t.string "description"
     t.integer "number"
+    t.bigint "quota_type_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["quota_type_id"], name: "index_quota_type_specifications_on_quota_type_id"
   end
 
   create_table "quota_types", force: :cascade do |t|
@@ -64,4 +66,5 @@ ActiveRecord::Schema.define(version: 2021_06_21_004604) do
   end
 
   add_foreign_key "parliamentarians", "legislatures"
+  add_foreign_key "quota_type_specifications", "quota_types"
 end
