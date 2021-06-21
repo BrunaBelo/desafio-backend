@@ -11,7 +11,12 @@ RSpec.describe QuotaType, type: :model do
     end
 
     describe 'should has many expenses' do
-      # pending
+      let!(:expense1) { create(:expense, quota_type: quota_type) }
+      let!(:expense2) { create(:expense, quota_type: quota_type) }
+
+      it { expect(quota_type.expenses.count).to eq(2) }
+      it { expect(quota_type.expenses).to include(expense1) }
+      it { expect(quota_type.expenses).to include(expense2) }
     end
   end
 end
