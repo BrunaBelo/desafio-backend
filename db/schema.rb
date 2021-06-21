@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_21_010902) do
+ActiveRecord::Schema.define(version: 2021_06_21_023131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,34 @@ ActiveRecord::Schema.define(version: 2021_06_21_010902) do
     t.integer "number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "expenses", force: :cascade do |t|
+    t.string "document_number"
+    t.datetime "issue_date"
+    t.decimal "value", precision: 9, scale: 2
+    t.decimal "gloss_value", precision: 9, scale: 2
+    t.decimal "net_value", precision: 9, scale: 2
+    t.integer "month"
+    t.integer "year"
+    t.integer "installment_number"
+    t.string "passenger"
+    t.string "travel_part"
+    t.string "lot_number"
+    t.string "refund"
+    t.string "restitution"
+    t.string "id_documento"
+    t.string "document_url"
+    t.bigint "parliamentarian_id", null: false
+    t.bigint "provider_id", null: false
+    t.bigint "expense_type_id", null: false
+    t.bigint "quota_type_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["expense_type_id"], name: "index_expenses_on_expense_type_id"
+    t.index ["parliamentarian_id"], name: "index_expenses_on_parliamentarian_id"
+    t.index ["provider_id"], name: "index_expenses_on_provider_id"
+    t.index ["quota_type_id"], name: "index_expenses_on_quota_type_id"
   end
 
   create_table "legislatures", force: :cascade do |t|
@@ -65,6 +93,10 @@ ActiveRecord::Schema.define(version: 2021_06_21_010902) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "expenses", "expense_types"
+  add_foreign_key "expenses", "parliamentarians"
+  add_foreign_key "expenses", "providers"
+  add_foreign_key "expenses", "quota_types"
   add_foreign_key "parliamentarians", "legislatures"
   add_foreign_key "quota_type_specifications", "quota_types"
 end
