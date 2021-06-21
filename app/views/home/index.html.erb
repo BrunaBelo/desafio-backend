@@ -1,0 +1,13 @@
+<div class="container">
+  <h1>Gastos Parlamentares</h1>
+  <p>Saiba como e onde os políticos do estado do PR estão gastando por meio da Cota 
+    para o Exercício da Atividade Parlamentar.</p>
+  <p>Faça upload do arquivo em formato CSV clicando no botão abaixo: </p>
+  
+  <%= form_with url: import_csv_path do |f| %>
+    <div class="form-group">
+        <%= f.file_field :file, class: "form-control-file mb-1", required: true %>
+    </div>
+    <%= f.submit 'Enviar Arquivo', class: "btn btn-primary" %>
+  <% end %>
+</div>
