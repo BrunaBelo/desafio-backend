@@ -1,3 +1,3 @@
 class Legislature < ApplicationRecord
-    has_many :parliamentarian
+    has_many :parliamentarians, dependent: :destroy
 end
