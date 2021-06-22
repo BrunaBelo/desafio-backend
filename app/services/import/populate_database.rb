@@ -2,14 +2,14 @@ require 'csv'
 
 module Import
     class PopulateDatabase
-        attr_reader :csv
+        attr_reader :file
          
-        def initialize(csv)
-            @csv = csv
+        def initialize(file)
+            @file = file
         end
     
-        def self.populate(csv)
-            new(csv).populate
+        def self.populate(file)
+            new(file).populate
         end
 
         def populate
