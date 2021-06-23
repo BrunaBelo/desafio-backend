@@ -42,10 +42,11 @@ Esses requisitos não são obrigatórios, mas serão levados em consideração c
 
 A aplicação pode ser testada por meio do Docker:
 - docker-compose up
+Caso ocorra algum erro de permissão basta executar: sudo chown -R $USER:$USER .
 
 ### Criando o banco de dados
 - docker-compose run web rake db:create
-- docker-compose run web rake db:migrate && docker-compose run web rake db:migrate RAILS_ENV=test
+- docker-compose run web rake db:migrate
 - docker-compose run web rake db:seed && docker-compose run web rake db:seed RAILS_ENV=test
 
 Após, abra o navegador e acesse __localhost:3000__.
