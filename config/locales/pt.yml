@@ -1,0 +1,8 @@
+pt:
+  number:
+     currency:
+        format:
+          unit: 'R$'
+          delimiter: '.'
+          separator: ','
+          precision: 2
