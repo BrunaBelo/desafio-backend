@@ -8,35 +8,6 @@ Você já ouviu falar da CEAP? A Cota para o Exercício da Atividade Parlamentar
 
 - [Fonte de dados (pegar o referente ao ano 2020 em formato CSV)](https://dadosabertos.camara.leg.br/swagger/api.html#staticfile)
 - [Explicação dos campos do arquivo CSV](https://www2.camara.leg.br/transparencia/cota-para-exercicio-da-atividade-parlamentar/explicacoes-sobre-o-formato-dos-arquivos-xml)
-- Ignorar linhas que não tenham no campo `sgUF` o estado que você mora. O objetivo do trabalho é focar apenas no seu estado;
-- Considerar para fins de cálculos de despesa, o campo `vlrLiquido`. Esse é o valor que de fato foi debitado da cota do candidato;
-- Dica para pegar a foto do político: **http://www.camara.leg.br/internet/deputado/bandep/{ideCadastro}.jpg**
-
-
-## Requisitos Obrigatórios
-- Possibilitar o upload do arquivo;
-- Organizar os dados extraidos do arquivo em tabelas no banco de dados;
-- Listagem dos deputados do seu estado;
-- Mostrar o somatório dos seus gastos;
-- Listar as despesas, mostrando a data(`datEmissao`), estabelecimento(`txtFornecedor`), valor(`vlrLiquido`), e link para a nota(`urlDocumento`);
-- Destacar a maior despesa do candidato;
-- Usar o framework Rails (utilize esse repositório como base);
-- Ter uma cobertura de código;
-
-# Requisitos bônus
-Esses requisitos não são obrigatórios, mas serão levados em consideração como pontos extras no momento da avaliação.
-
-- Exibir gráficos para melhorar a visualização dos gastos;
-- Aplicação hospedada no Heroku, AWS ou similares;
-- Evitar N + 1 nas queries;
-- Organizar estrutura do projeto utilizando padrões de projetos;
-
-# Critérios de avaliação
-
-- Organização do projeto: Avalia a estrutura do projeto, documentação e uso de controle de versão;
-- Coerência: Avalia se os requisitos foram atendidos;
-- Boas práticas: Avalia se o projeto segue boas práticas de desenvolvimento, incluindo segurança e otimização;
-- Criatividade: Avalia o quanto você "pensou fora da caixa", levando em conta soluções criativas para os problemas levantados;
 
 ### Instalação
 
@@ -52,4 +23,4 @@ Caso ocorra algum erro de permissão basta executar: sudo chown -R $USER:$USER .
 Após, abra o navegador e acesse __localhost:3000__.
 
 ### Testando
-- Para rodar os testes utilize o `docker-compose run web rspec`.
+- Para rodar os testes utilize o comando `docker-compose run web rspec`.
