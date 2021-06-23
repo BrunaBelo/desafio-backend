@@ -1,4 +1,25 @@
 <div class="container">
   <%= render_message(flash[:error], 'error') %>
   <%= render_message(flash[:success], 'success') %>
+
+  <h2 class="text-center mb-5 pt-3">Parlamentares do estado do Paraná</h2>
+
+  <% @parliamentarians.each_slice(5) do |parliamentarians| %>
+    <div class="row">
+      <% parliamentarians.each do |parliamentarian| %>
+        <div class="col card-parliamentarian mr-3 mb-2">
+          <div class="card" style="width: 12rem;">
+            <%= image_tag "http://www.camara.leg.br/internet/deputado/bandep/#{parliamentarian.register_id}.jpg", class: "card-img-top" %>
+            <div class="card-body">
+              <a href=<%= parliamentarian_path(parliamentarian.id) %>>
+                <h5 class="card-title text-truncate"><%= parliamentarian.name %></h5>
+              </a>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= will_paginate @parliamentarians, renderer: BootstrapPagination::Rails  %>
 </div>
