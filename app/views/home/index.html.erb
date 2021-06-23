@@ -1,11 +1,15 @@
 <div class="container">
   <%= render_message(flash[:error], 'error') %>
   <%= render_message(flash[:success], 'success') %>
+  
   <body>
-    <h1>Gastos Parlamentares</h1>
-    <p>Saiba como e onde os políticos do estado do PR estão gastando por meio da Cota 
-      para o Exercício da Atividade Parlamentar.</p>
-    <p>Faça upload do arquivo em formato CSV clicando no botão abaixo: </p>
+    <h2 class="mt-5 mb-4">Gastos Parlamentares do Estado do Paraná</h2>
+
+    <p class="mb-5">Saiba como e onde os políticos do estado do PR estão gastando por meio da Cota 
+    para o Exercício da Atividade Parlamentar. Faça o download da fonte de dados no
+    <a href="https://dadosabertos.camara.leg.br/swagger/api.html#staticfile" target="_blank">Portal da Transparência</a>.
+    E depois faça upload do arquivo em formato CSV clicando no botão abaixo e aguarde os dados serem processados.
+    Quando os dados forem processados você será direcionado para página de listagem dos parlamentares.</p>
     
     <%= form_with url: import_csv_path do |f| %>
       <div class="form-group">

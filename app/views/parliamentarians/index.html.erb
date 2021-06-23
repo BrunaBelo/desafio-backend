@@ -2,7 +2,7 @@
   <%= render_message(flash[:error], 'error') %>
   <%= render_message(flash[:success], 'success') %>
 
-  <h2 class="text-center mb-5 pt-3">Parlamentares do estado do Paraná</h2>
+  <h3 class="text-center mb-5 pt-3">Parlamentares do estado do Paraná</h3>
 
   <% @parliamentarians.each_slice(5) do |parliamentarians| %>
     <div class="row">
