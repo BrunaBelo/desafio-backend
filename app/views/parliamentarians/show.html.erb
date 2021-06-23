@@ -1,2 +1,51 @@
-<h1>Parliamentarian#show</h1>
-<p>Find me in app/views/parliamentarian/show.html.erb</p>
+<div class="container">
+  <div class="parliamentarian">
+    <div class="row">
+      <div class="col-2 mt-3">
+        <%= image_tag "http://www.camara.leg.br/internet/deputado/bandep/#{@parliamentarian.register_id}.jpg", class: "card-img-top" %>
+      </div>
+      <div class="col-10 mt-2">
+        <h2><%= @parliamentarian.name %></h2>
+        <p class="font-weight-bold">Legislatura: <%= @parliamentarian.legislature.year %></p>
+        <p class="font-weight-bold">Carteira Parlamentar: <%= @parliamentarian.card_parliamentary %></p>
+        <p class="font-weight-bold">Registro: <%= @parliamentarian.register_id %></p>
+        <p class="font-weight-bold">CPF: <%= @parliamentarian.number_person_id %></p>
+        <p class="font-weight-bold">Partido: <%= @parliamentarian.political_party %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="parliamentarian-info-expenses">
+    <p> 
+      O maior gasto de <%= @parliamentarian.name %> foi no valor de 
+      <strong> <%= number_to_currency(@parliamentarian.expenses.biggest_value.net_value, locale: :pt) %></strong>,
+      com a nota fiscal: <%= link_to('Link', @parliamentarian.expenses.biggest_value.document_url, target: '_blank') %>.
+      O valor total das suas despesas é de
+      <strong><%= number_to_currency(@parliamentarian.expenses.sum_total_net_value, locale: :pt) %></strong>.
+    </p>
+  </div>
+
+  <div class="expenses">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Data de Emissão</th>
+          <th scope="col">Fornecedor</th>
+          <th scope="col">Valor Líquido</th>
+          <th scope="col">Documento</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @expenses.each do |expense| %>
+          <tr>
+            <td><%= l(expense.issue_date, format: '%d-%m-%Y') if expense.issue_date.present? %></td>
+            <td><%= expense.provider.name %></td>
+            <td><%= number_to_currency(expense.net_value, locale: :pt) %></td>
+            <td><%= expense.document_url.present? ? link_to('Link', expense.document_url, target: '_blank') : 'Sem Documento' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @expenses, renderer: BootstrapPagination::Rails  %>
+  </div>
+</div>

@@ -6,6 +6,6 @@ class ParliamentariansController < ApplicationController
 
   def show
     @parliamentarian = Parliamentarian.find(params[:id])
-    @expense = @parliamentarian.expenses
+    @expenses = @parliamentarian.expenses.paginate(page: params[:page], per_page: 10)
   end
 end
