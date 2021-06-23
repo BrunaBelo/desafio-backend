@@ -1,4 +1,5 @@
 # Ranking dos gastos dos Deputados
+A aplicação foi hospedada no Heroku e pode ser visualizada em: [https://gastos-parlamentares.herokuapp.com/](https://gastos-parlamentares.herokuapp.com/).
 
 ## Descrição do desafio
 
