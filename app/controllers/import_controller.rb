@@ -1,9 +1,10 @@
 class ImportController < ApplicationController
   def import_csv
-    if(Import::PopulateDatabase.populate(params[:file]))
+    error = Import::PopulateDatabase.populate(params[:file])
+    if(error.blank?)
       redirect_to parliamentarians_path, flash: { success: 'Arquivo importado com sucesso!' }
     else
-      redirect_to root_path, flash: { error: 'Erro ao importar arquivo csv.' }
+      redirect_to root_path, flash: { error: error }
     end
   end
 end

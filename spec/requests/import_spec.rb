@@ -21,7 +21,7 @@ RSpec.describe "Imports", type: :request do
     context 'when the file is not imported successfully' do
       it 'should return message error' do
         post import_csv_path, params: { file: file_with_error }
-        expect(flash[:error]).to eq('Erro ao importar arquivo csv.')
+        expect(flash[:error]).to eq('Arquivo CSV mal formatado! Verifique a formatação do arquivo e tente novamente.')
       end
 
       it 'should redirect to root_path' do
